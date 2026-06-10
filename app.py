@@ -2,7 +2,6 @@ from flask import Flask, jsonify, request
 from extensions import db, migrate
 from models import Clan, Trener, Trening, Specijalnost
 from flask_cors import CORS
-from datetime import datetime
 
 app = Flask(__name__)
 CORS(app)
