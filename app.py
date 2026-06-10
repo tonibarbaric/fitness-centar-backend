@@ -47,7 +47,7 @@ def dodaj_clana():
     )
     db.session.add(novi)
     db.session.commit()
-    return jsonify({"poruka": "Član dodan"}), 201
+    return "Član dodan"
 
 
 @app.route('/clanovi/<id>', methods=['PUT'])
@@ -60,7 +60,7 @@ def uredi_clana(id):
     c.email = data.get('email')
 
     db.session.commit()
-    return jsonify({"poruka": "Član uspješno ažuriran"})
+    return "Član uspješno ažuriran"
 
 
 @app.route('/clanovi/<id>', methods=['DELETE'])
@@ -68,7 +68,7 @@ def izbrisi_clana(id):
     c = Clan.query.get_or_404(id)
     db.session.delete(c)
     db.session.commit()
-    return jsonify({"poruka": "Član obrisan"})
+    return "Član obrisan"
 
 
 @app.route('/treneri', methods=['GET'])
@@ -93,7 +93,7 @@ def dodaj_trenera():
     )
     db.session.add(novi)
     db.session.commit()
-    return jsonify({"poruka": "Trener dodan"}), 201
+    return "Trener dodan"
 
 
 @app.route('/treneri/<id>', methods=['PUT'])
@@ -106,7 +106,7 @@ def uredi_trenera(id):
     t.specijalnost_id = data.get('specijalnost_id')
 
     db.session.commit()
-    return jsonify({"poruka": "Trener uspješno ažuriran"})
+    return "Trener uspješno ažuriran"
 
 
 @app.route('/treneri/<id>', methods=['DELETE'])
@@ -114,7 +114,7 @@ def izbrisi_trenera(id):
     t = Trener.query.get_or_404(id)
     db.session.delete(t)
     db.session.commit()
-    return jsonify({"poruka": "Trener obrisan"})
+    return "Trener obrisan"
 
 
 @app.route('/treninzi', methods=['GET'])
@@ -137,7 +137,7 @@ def dodaj_trening():
     )
     db.session.add(novi)
     db.session.commit()
-    return jsonify({"poruka": "Trening dodan"}), 201
+    return "Trening dodan"
 
 @app.route('/treninzi/<id>', methods=['PUT'])
 def uredi_trening(id):
@@ -151,7 +151,7 @@ def uredi_trening(id):
     t.kapacitet = data.get('kapacitet')
     t.trener_id = data.get('trener_id')
     db.session.commit()
-    return jsonify({"poruka": "Trening uređen"})
+    return "Trening uređen"
 
 
 @app.route('/treninzi/<id>', methods=['DELETE'])
@@ -159,13 +159,44 @@ def izbrisi_trening(id):
     t = Trening.query.get_or_404(id)
     db.session.delete(t)
     db.session.commit()
-    return jsonify({"poruka": "Trening obrisan"})
+    return "Trening obrisan"
 
 
 @app.route('/specijalnosti', methods=['GET'])
 def specijalnosti():
     sve = Specijalnost.query.all()
     return jsonify([s.to_dict() for s in sve])
+
+@app.route('/specijalnosti/<id>', methods=['GET'])
+def specijalnost(id):
+    s = Specijalnost.query.get_or_404(id)
+    return jsonify(s.to_dict())
+
+@app.route('/specijalnosti', methods=['POST'])
+def dodaj_specijalnost():
+    data = request.get_json()
+    nova = Specijalnost(
+        naziv=data.get('naziv')
+    )
+    db.session.add(nova)
+    db.session.commit()
+
+    return "Specijalnost dodana"
+
+@app.route('/specijalnosti/<id>', methods=['PUT'])
+def uredi_specijalnost(id):
+    s = Specijalnost.query.get_or_404(id)
+    data = request.get_json()
+    s.naziv = data.get('naziv')
+    db.session.commit()
+    return "Specijalnost uspješno ažurirana"
+
+@app.route('/specijalnosti/<id>', methods=['DELETE'])
+def izbrisi_specijalnost(id):
+    s = Specijalnost.query.get_or_404(id)
+    db.session.delete(s)
+    db.session.commit()
+    return "Specijalnost obrisana"
 
 
 if __name__ == "__main__":
