@@ -53,8 +53,8 @@ class Trening(db.Model):
     naziv = db.Column(db.String(100), nullable=False)
     opis = db.Column(db.Text, nullable=True)
     dan_u_tjednu = db.Column(db.String(20), nullable=False)
-    vrijeme_pocetka = db.Column(db.DateTime(), nullable=False)
-    vrijeme_kraja = db.Column(db.DateTime(), nullable=False)
+    vrijeme_pocetka = db.Column(db.String(50), nullable=False)
+    vrijeme_kraja = db.Column(db.String(50), nullable=False)
     kapacitet = db.Column(db.Integer, nullable=False)
     trener_id = db.Column(db.Integer, db.ForeignKey('treneri.id'), nullable=False)
 
@@ -64,8 +64,8 @@ class Trening(db.Model):
             "naziv": self.naziv,
             "opis": self.opis,
             "dan_u_tjednu": self.dan_u_tjednu,
-            "vrijeme_pocetka": self.vrijeme_pocetka.isoformat() if self.vrijeme_pocetka else None,
-            "vrijeme_kraja": self.vrijeme_kraja.isoformat() if self.vrijeme_kraja else None,
+            "vrijeme_pocetka": self.vrijeme_pocetka,
+            "vrijeme_kraja": self.vrijeme_kraja,
             "kapacitet": self.kapacitet,
             "trener": {
                 "id": self.trener.id,

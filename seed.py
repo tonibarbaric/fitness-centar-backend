@@ -55,8 +55,8 @@ def seed_data():
                 naziv="Snažan Torzo",
                 opis="Intenzivan trening za prsa, leđa i ramena fokusiran na hipertrofiju.",
                 dan_u_tjednu="Ponedjeljak",
-                vrijeme_pocetka=sada.replace(hour=18, minute=0, second=0),
-                vrijeme_kraja=sada.replace(hour=19, minute=0, second=0) + timedelta(hours=1),
+                vrijeme_pocetka="18:00",
+                vrijeme_kraja="19:00",
                 kapacitet=12,
                 trener_id=t1.id
             ),
@@ -64,8 +64,8 @@ def seed_data():
                 naziv="Jutarnja Vinyasa Yoga",
                 opis="Lagano buđenje tijela uz vježbe disanja, istezanja i fleksibilnosti.",
                 dan_u_tjednu="Utorak",
-                vrijeme_pocetka=sada.replace(hour=8, minute=30, second=0),
-                vrijeme_kraja=sada.replace(hour=9, minute=30, second=0),
+                vrijeme_pocetka="08:30",
+                vrijeme_kraja="09:30",
                 kapacitet=15,
                 trener_id=t2.id
             ),
@@ -73,8 +73,8 @@ def seed_data():
                 naziv="Crossfit WOD",
                 opis="Workout of the Day - kombinacija olimpijskih dizanja, gimnastike i kardija.",
                 dan_u_tjednu="Srijeda",
-                vrijeme_pocetka=sada.replace(hour=19, minute=30, second=0),
-                vrijeme_kraja=sada.replace(hour=20, minute=30, second=0),
+                vrijeme_pocetka="19:30",
+                vrijeme_kraja="20:30",
                 kapacitet=10,
                 trener_id=t3.id
             ),
@@ -82,8 +82,8 @@ def seed_data():
                 naziv="Kardio HIIT Pakao",
                 opis="Visoko intenzivni intervalni trening za maksimalno trošenje kalorija.",
                 dan_u_tjednu="Četvrtak",
-                vrijeme_pocetka=sada.replace(hour=17, minute=0, second=0),
-                vrijeme_kraja=sada.replace(hour=18, minute=0, second=0),
+                vrijeme_pocetka="17:00",
+                vrijeme_kraja="18:00",
                 kapacitet=20,
                 trener_id=t4.id
             ),
@@ -91,8 +91,8 @@ def seed_data():
                 naziv="Powerlifting Osnove",
                 opis="Trening tehnike za čučanj, potisak s klupe i mrtvo dizanje.",
                 dan_u_tjednu="Petak",
-                vrijeme_pocetka=sada.replace(hour=16, minute=0, second=0),
-                vrijeme_kraja=sada.replace(hour=17, minute=30, second=0),
+                vrijeme_pocetka="16:00",
+                vrijeme_kraja="17:30",
                 kapacitet=8,
                 trener_id=t5.id
             )

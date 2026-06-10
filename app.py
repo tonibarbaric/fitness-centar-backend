@@ -131,8 +131,8 @@ def dodaj_trening():
         naziv=data.get('naziv'),
         opis=data.get('opis'),
         dan_u_tjednu=data.get('dan_u_tjednu'),
-        vrijeme_pocetka=datetime.fromisoformat(data.get('vrijeme_pocetka')),
-        vrijeme_kraja=datetime.fromisoformat(data.get('vrijeme_kraja')),
+        vrijeme_pocetka=data.get('vrijeme_pocetka'),
+        vrijeme_kraja=data.get('vrijeme_kraja'),
         kapacitet=data.get('kapacitet'),
         trener_id=data.get('trener_id')
     )
@@ -140,22 +140,19 @@ def dodaj_trening():
     db.session.commit()
     return jsonify({"poruka": "Trening dodan"}), 201
 
-
 @app.route('/treninzi/<id>', methods=['PUT'])
 def uredi_trening(id):
     t = Trening.query.get_or_404(id)
     data = request.get_json()
-
     t.naziv = data.get('naziv')
     t.opis = data.get('opis')
     t.dan_u_tjednu = data.get('dan_u_tjednu')
-    t.vrijeme_pocetka = datetime.fromisoformat(data.get('vrijeme_pocetka'))
-    t.vrijeme_kraja = datetime.fromisoformat(data.get('vrijeme_kraja'))
+    t.vrijeme_pocetka = data.get('vrijeme_pocetka')
+    t.vrijeme_kraja = data.get('vrijeme_kraja')
     t.kapacitet = data.get('kapacitet')
     t.trener_id = data.get('trener_id')
-
     db.session.commit()
-    return jsonify({"poruka": "Trening uspješno ažuriran"})
+    return jsonify({"poruka": "Trening uređen"})
 
 
 @app.route('/treninzi/<id>', methods=['DELETE'])
