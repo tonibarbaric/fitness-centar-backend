@@ -1,6 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
+from extensions import db
 
 class Specijalnost(db.Model):
     __tablename__ = "specijalnosti"
@@ -31,6 +29,7 @@ class Trener(db.Model):
             "prezime": self.prezime,
             "specijalnost": self.specijalnost.to_dict() if self.specijalnost else None
         }
+
 
 class Clan(db.Model):
     __tablename__ = "clanovi"
@@ -68,7 +67,6 @@ class Trening(db.Model):
             "vrijeme_pocetka": self.vrijeme_pocetka.isoformat() if self.vrijeme_pocetka else None,
             "vrijeme_kraja": self.vrijeme_kraja.isoformat() if self.vrijeme_kraja else None,
             "kapacitet": self.kapacitet,
-            "trener_id": self.trener_id,
             "trener": {
                 "id": self.trener.id,
                 "ime": self.trener.ime,
