@@ -1,6 +1,6 @@
 from app import app, db
 from models import Trener, Clan, Trening, Specijalnost
-from datetime import datetime, timedelta
+
 
 
 def seed_data():
@@ -48,7 +48,7 @@ def seed_data():
         db.session.add_all(clanovi)
 
         print("Dodajem treninge (5)...")
-        sada = datetime.now()
+
 
         treninzi = [
             Trening(
